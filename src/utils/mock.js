@@ -1,4 +1,4 @@
-export const TODO = [
+const TODO = [
 
     { title:'title 1', id:'1', status: 'TODO'},
     { title:'title 2', id:'2', status: 'DONE'},
@@ -7,3 +7,4 @@ export const TODO = [
     { title:'title 5', id:'5', status: 'PENDING'},
     { title:'title 6', id:'6', status: 'TODO'},
 ]
+module.exports = TODO;

@@ -1,7 +1,8 @@
-
-import express from 'express';
-import { updateProduct } from './modules/test/demo.controller';
+const express= require('express');
+const updateProduct= require('./modules/test/demo.controller');
 const router = express.Router();
+const TODO = require('./utils/mock')
+
 router.get('/',(req,res)=>
 {
     res.send(`<h2>Hello World</h2>`);
@@ -25,9 +26,15 @@ router.get('/tasks/:type',(req,res)=>{
 });
 
 router.get('/task/:id',(req,res)=>{
-    const tasks = TODO.find(v => v.id.toLowerCase() === req.params.id);
-    res.send({data:tasks});
+    const task = TODO.find(v => v.id.toLowerCase() === req.params.id);
+        res.send(`
+        <h2>Task Details</h2>
+        <p>Title: ${task.title}</p>
+        <p>ID: ${task.id}</p>
+        <p>Status: ${task.status}</p>
+    `);
 });
+
 router.post('/product',(req, res) => {
     console.log(req.body);
     res.send(`<h2>Hello this is test </h2>`);
@@ -35,5 +42,4 @@ router.post('/product',(req, res) => {
 
 router.put('/product',updateProduct);
 
-
-export default router;
+module.exports= router;
